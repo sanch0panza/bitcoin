@@ -1,8 +1,8 @@
 Generalized version bits voting (bip-genvbvoting)
-=================================================
+====================================================
 
 1. What is this?
-----------------
+------------------------
 
 bip-genvbvoting is a reworked version of BIP9 versionbits which allows each
 versionbit to be configured with its own threshold etc.
@@ -14,10 +14,10 @@ https://github.com/sanch0panza/bips/blob/bip-genvbvoting/bip-genvbvoting.mediawi
 
 
 2. Design
----------
+------------------------
 
-3.1. Config file
-~~~~~~~~~~~~~~~~
+2.1. Config file
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Fork (deployment) information will be extracted to a configuration file
 for ease of maintenance and regression testing.
@@ -72,8 +72,8 @@ The 'testdummy' assignments on bit 28 are historically used by some tests,
 but could fall away in the future if those tests no longer need them.
 
 
-3.2. Adaptated files
-~~~~~~~~~~~~~~~~~~~~
+2.2. Adaptated files
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The new functionality will be added in versionbits.{h,cpp}.
 Where possible existing interfaces will be preserved to keep changes to the
@@ -83,17 +83,17 @@ A class to read the forks.csv config could be added in its own forkcsv.{h,cpp} .
 This is still to be determined.
 
 
-4. Test plan
-------------
+3. Test plan
+------------------------
 
-4.1 Unit tests
-~~~~~~~~~~~~~~
+3.1 Unit tests
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Unit tests shall be added for any adapted and new classes (e.g. for reading
 and validating contents of the forks.csv file)
 
-4.2 Regression tests
-~~~~~~~~~~~~~~~~~~~~
+3.2 Regression tests
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Test that definitions on each bit are accepted for defined chains - they shall
 override the default (compiled-in) settings.
@@ -113,6 +113,6 @@ Test any notifications (if specified)
 
 
 References
-----------
+------------------------
 
 [1] https://tools.ietf.org/rfc/rfc4180.txt
