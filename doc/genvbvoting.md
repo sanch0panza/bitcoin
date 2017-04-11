@@ -22,6 +22,9 @@ https://github.com/sanch0panza/bips/blob/bip-genvbvoting/bip-genvbvoting.mediawi
 Fork (deployment) information will be extracted to a configuration file
 for ease of maintenance and regression testing.
 
+This file, if present in a standard location (e.g. datadir), will override
+the built-in client defaults.
+
 The implementation will use a comma-separated value (CSV, RFC4180 [1])
 configuration file which contains the versionbits configuration for each
 chain known to the client (matched using the chains' strNetworkID defined
@@ -110,6 +113,48 @@ conditions.
 Test grace period parameters.
 
 Test any notifications (if specified)
+
+
+4. Recommendations received during spec review:
+--------------------------------------------------------
+
+Some observations on review comments received privately (outside of main review
+list and forums) noted here with thoughts on implementation:
+
+4.1 Be self-documenting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This could be achieved by a command line argument which causes the client to
+dump its built-in default deployment data in CSV format, ready to be used as
+a template for the config file.
+
+This should contain a standard commented file header similar to the above
+example, so that a user can immediately know the meaning of the fields.
+
+4.2 Be upgrade-ready
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The default mode would be to deliver built-in defaults corresponding to the
+known deployments. An upgrade would work just like today - just install a
+newer client which comes with updated deployment built-in.
+
+For comfort, packaging scripts could generate the latest forks.csv matching
+the built-in defaults, and place that in an informational folder where it
+is available for reference.
+
+Install scripts could, when upgrading, check for the presence of an active
+forks.csv file (e.g. in the datadir) and warn the user in case there are
+differences that might need merging.
+
+4.3 Don't leave crappy confusing files on anyone's computer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Uninstall scripts would remove any informational copies of the configuration
+file, and leave the user's active file (if present) untouched unless the
+user opts to remove them during de-installation.
+
+No new files are generated automatically during runtime, this data only
+needs to be read by the client.
 
 
 References
