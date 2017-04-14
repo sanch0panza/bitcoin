@@ -35,11 +35,11 @@ Lines beginning with hashes or semicolons will be treated as comment lines and
 ignored.
 Data lines will consist of the following comma-separated fields:
 
-    chainname,bit,name,starttime,timeout,windowsize,threshold,minlockedblocks,minlockedtime,gbtforce
+    network,bit,name,starttime,timeout,windowsize,threshold,minlockedblocks,minlockedtime,gbtforce
 
 The expected data types of these fields are:
 
-    chainname       - ASCII string
+    network         - ASCII string
     bit             - integer in range 0..28
     name            - ASCII string
     starttime       - integer representing UNIX (POSIX) timestamp
@@ -56,7 +56,7 @@ Example of file content (with header comment):
     # This file defines the known consensus changes tracked by the software
     # MODIFY AT OWN RISK - EXERCISE EXTREME CARE
     # Line format:
-    # chainname,bit,name,starttime,timeout,windowsize,threshold,minlockedblocks,minlockedtime,gbtforce
+    # network,bit,name,starttime,timeout,windowsize,threshold,minlockedblocks,minlockedtime,gbtforce
     # main network, 95% @ 2016 blocks:
     main,0,csv,1462060800,1493596800,2016,1916,2016,0,true
     main,1,segwit,1479168000,1510704000,2016,1916,2016,0,true
